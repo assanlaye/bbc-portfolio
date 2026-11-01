@@ -152,7 +152,9 @@
     const viewport = carousel.querySelector(".coverflow-viewport");
     const progressEl = carousel.querySelector("[data-coverflow-progress]");
     const currentEl = carousel.querySelector("[data-slide-current]");
+    const totalEl = carousel.querySelector("[data-slide-total]");
     const total = Math.max(slides.length - 1, 1);
+    if (totalEl) totalEl.textContent = String(slides.length).padStart(2, "0");
     let index = 0;
     let dragX = 0;
     let startX = 0;
