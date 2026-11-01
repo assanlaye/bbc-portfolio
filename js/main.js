@@ -8,18 +8,22 @@
   /* ---------- Mobile nav ---------- */
   const toggle = document.querySelector(".nav-toggle");
   const mobileNav = document.querySelector(".mobile-nav");
+  const setMenuOpen = (open) => {
+    if (!toggle || !mobileNav) return;
+    mobileNav.classList.toggle("is-open", open);
+    toggle.classList.toggle("is-active", open);
+    document.body.classList.toggle("menu-open", open);
+    mobileNav.hidden = !open;
+    toggle.setAttribute("aria-expanded", String(open));
+    toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+  };
+
   if (toggle && mobileNav) {
     toggle.addEventListener("click", () => {
-      const open = mobileNav.classList.toggle("is-open");
-      mobileNav.hidden = !open;
-      toggle.setAttribute("aria-expanded", String(open));
+      setMenuOpen(!mobileNav.classList.contains("is-open"));
     });
     mobileNav.querySelectorAll("a").forEach((link) => {
-      link.addEventListener("click", () => {
-        mobileNav.classList.remove("is-open");
-        mobileNav.hidden = true;
-        toggle.setAttribute("aria-expanded", "false");
-      });
+      link.addEventListener("click", () => setMenuOpen(false));
     });
   }
 
