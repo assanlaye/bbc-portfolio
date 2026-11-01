@@ -1,0 +1,10 @@
+{
+  "name": "babucarr-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Portfolio site for Baboucarr B. Ceesay — graphics & UI/UX designer",
+  "scripts": {
+    "dev": "npx --yes serve . -l 5173",
+    "start": "npx --yes serve . -l 5173"
+  }
+}
